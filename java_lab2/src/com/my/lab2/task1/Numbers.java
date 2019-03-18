@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Numbers {
+    private final int initCounter = 2;
     private List<Integer> numbers = new ArrayList<Integer>();
     public Numbers(){}
 
@@ -19,7 +20,7 @@ public class Numbers {
         if(this.numbers.size() != 0){
             List<Integer> lucky = new ArrayList<Integer>();
             for(int i = 0; i < numbers.size(); i++){
-                if(new SmartNumber().isLucky(numbers.get(i))) lucky.add(numbers.get(i));
+                if(isLucky(numbers.get(i), initCounter)) lucky.add(numbers.get(i));
             }
             return lucky;
         }
@@ -27,6 +28,14 @@ public class Numbers {
     }
     public void add(int number){
         this.numbers.add(number);
+    }
+
+    private boolean isLucky(int n, int counter) {
+        if(n % counter == 0) return false;
+        if(n < counter) return true;
+        n -= n/counter;
+        counter++;
+        return isLucky(n, counter);
     }
 
     @Override
