@@ -2,12 +2,12 @@ package com.my.lab2.task2;
 
 import java.util.*;
 
-public class CLI implements Observer {
-    private Obs obs;
+public class Cli implements Observer {
+    private ConcreteObservable concreteObservable;
 
-    public CLI(Obs obs) {
-        this.obs = obs;
-        this.obs.addObserver(this);
+    public Cli(ConcreteObservable concreteObservable) {
+        this.concreteObservable = concreteObservable;
+        this.concreteObservable.addObserver(this);
     }
 
     public void checkStrigns() {
@@ -19,14 +19,14 @@ public class CLI implements Observer {
         for(String word : listOfWords){
             resultingString.append(word).append(" ");
         }
-        obs.setResult(new ArrayList(listOfWords));
+        concreteObservable.setResult(new ArrayList(listOfWords));
     }
 
 
     @Override
-    public void update(Observable observable, Object o) {
-        if(observable == obs) {
-            System.out.println(obs.getResult().toString());
+    public void update(java.util.Observable observable, Object o) {
+        if(observable == this.concreteObservable) {
+            System.out.println(this.concreteObservable.getResult().toString());
         }
     }
 

@@ -3,21 +3,21 @@ package com.my.lab2.task1;
 import java.util.List;
 import java.util.Scanner;
 
-public class CLI extends Observer{
+public class Cli implements Observer{
     Numbers numbers;
     Scanner sc;
-    Obs obs;
+    ConcreteObservable concreteObservable;
 
-    public CLI() {
+    public Cli() {
         numbers = new Numbers();
         sc = new Scanner(System.in);
     }
 
-    public CLI(Obs obs) {
+    public Cli(ConcreteObservable concreteObservable) {
         numbers = new Numbers();
         sc = new Scanner(System.in);
-        obs = obs;
-        obs.registerObserver(this);
+        this.concreteObservable = concreteObservable;
+        this.concreteObservable.registerObserver(this);
     }
 
     public int readQuantity() throws Exception {
@@ -42,16 +42,13 @@ public class CLI extends Observer{
             System.out.println(e.toString());
         }
     }
-    public void printLuckyNumbers() {
-        List<Integer> l = numbers.getLuckyNumbers();
-        System.out.println("Lucky numbers:\n" + l.toString());
-    }
 
     public void run() {
         while(true) {
             try {
                 readNumbers();
-                obs.setLuckyNumbers(numbers.getLuckyNumbers());
+                List<Integer> lucky = numbers.getLuckyNumbers();
+                concreteObservable.setLuckyNumbers(lucky);
             } catch (Exception e) {
                 System.out.println(e.toString());
             }

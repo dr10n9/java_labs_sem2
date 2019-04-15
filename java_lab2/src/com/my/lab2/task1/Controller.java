@@ -2,21 +2,20 @@ package com.my.lab2.task1;
 import java.util.List;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class Controller extends Observer {
+public class Controller implements Observer {
     @FXML
     TextField numbers;
     @FXML
     TextArea luckyNumbers;
 
-    Obs obs;
+    ConcreteObservable concreteObservable;
 
-    public Controller(Obs o) {
-        obs = o;
-        obs.registerObserver(this);
+    public Controller(ConcreteObservable o) {
+        concreteObservable = o;
+        concreteObservable.registerObserver(this);
     }
 
     public void getLucky() {
@@ -31,7 +30,7 @@ public class Controller extends Observer {
             }
         }
         List<Integer> l = n.getLuckyNumbers();
-        obs.setLuckyNumbers(l);
+        concreteObservable.setLuckyNumbers(l);
 //        luckyNumbers.setText(l.toString());
     }
 

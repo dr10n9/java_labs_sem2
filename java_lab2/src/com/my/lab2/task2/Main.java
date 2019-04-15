@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     public void start(Stage stage) throws Exception {
-        Obs o = new Obs();
+        ConcreteObservable o = new ConcreteObservable();
 
         Controller c = new Controller(o);
         FXMLLoader loader = new FXMLLoader(Controller.class.getResource("task2.fxml"));
@@ -22,7 +22,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        CLI cli = new CLI(o);
+        Cli cli = new Cli(o);
         Thread cliThread = new Thread(cli::run);
         cliThread.setDaemon(true);
         cliThread.start();

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Obs implements Observable{
+public class ConcreteObservable implements Observable{
     List<Observer> observers;
     List luckyNumbers;
-    public Obs() {
-        observers = new LinkedList<Observer>();
+    public ConcreteObservable() {
+        observers = new LinkedList<>();
     }
 
     @Override

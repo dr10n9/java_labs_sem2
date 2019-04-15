@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Obs extends Observable{
+public class ConcreteObservable extends java.util.Observable {
     private ArrayList<Observer> observers;
     private ArrayList<String> result;
 
-    public Obs() {
-        observers = new ArrayList<Observer>();
+    public ConcreteObservable() {
+        observers = new ArrayList<>();
     }
 
     @Override

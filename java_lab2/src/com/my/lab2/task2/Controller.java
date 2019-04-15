@@ -2,7 +2,6 @@ package com.my.lab2.task2;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import java.util.Observer;
 
 import javafx.fxml.FXML;
@@ -16,11 +15,11 @@ public class Controller implements Observer {
     @FXML
     TextArea resultStrings;
 
-    private Obs obs;
+    private ConcreteObservable concreteObservable;
 
-    public Controller(Obs obs) {
-        this.obs = obs;
-        this.obs.addObserver(this);
+    public Controller(ConcreteObservable concreteObservable) {
+        this.concreteObservable = concreteObservable;
+        this.concreteObservable.addObserver(this);
     }
 
     public void checkStrings() {
@@ -31,7 +30,7 @@ public class Controller implements Observer {
         for(String word : listOfWords){
             resultingString.append(word).append(" ");
         }
-        obs.setResult(new ArrayList(listOfWords));
+        concreteObservable.setResult(new ArrayList(listOfWords));
     }
 
     public void clear() {
@@ -39,9 +38,9 @@ public class Controller implements Observer {
     }
 
     @Override
-    public void update(Observable o, Object obj) {
-        if(o == obs) {
-            resultStrings.setText(obs.getResult().toString());
+    public void update(java.util.Observable o, Object obj) {
+        if(o == concreteObservable) {
+            resultStrings.setText(concreteObservable.getResult().toString());
         }
     }
 }
