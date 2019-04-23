@@ -1,17 +1,20 @@
-package com.my.lab3.task1;
+package com.my.lab3.task1.dao;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 public interface Dao<T> {
 
-    Optional<T> get(long id);
+//    Optional<T> get();
 
-    List<T> getAll();
+//    List<T> getAll();
 
-    void save(T t);
+//    void update(T t);
 
-    void update(T t, String[] params);
+    T getAll() throws IOException;
 
-    void delete(T t);
+    void save(T t) throws IOException;
+
+    void delete() throws IOException;
 }

@@ -6,9 +6,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<?import javafx.scene.text.Text?>
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
+            fx:controller="com.my.lab3.task1.Gui"
             prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <HBox spacing="5">
+            <TextField fx:id="inputFileName" promptText="input"/>
+            <TextField fx:id="outputFileName" promptText="output"/>
+            <!--<Button text="generate file" onAction="#generateFile"> </Button>-->
+        </HBox>
+    </top>
+    <center>
+        <HBox spacing="5">
+            <TextArea fx:id="numbersList">
 
-</AnchorPane>
+            </TextArea>
+        </HBox>
+    </center>
+    <bottom>
+        <HBox spacing="5">
+            <Button text="process" onAction="#processNumbers"/>
+            <Button text="readInput" onAction="#readInput"/>
+            <Button text="readOutput" onAction="#readOutput"/>
+        </HBox>
+    </bottom>
+</BorderPane>
+
+
