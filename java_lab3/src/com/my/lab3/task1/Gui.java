@@ -50,6 +50,8 @@ public class Gui implements java.util.Observer{
             numbers.processNumbers();
             numbersDao.getFileHandler().setFileName(outputFileName.getText());
             numbersDao.save(numbers);
+            concreteObservable.setResult(numbers.getNumbers());
+            concreteObservable.notifyObservers();
         } catch (IOException e) {
             System.out.println(e.toString());
         }

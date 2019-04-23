@@ -12,11 +12,24 @@ import java.io.IOException;
 
 
 public class Main extends Application {
-    public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
+    public void start(Stage stage) throws IOException {
+        ConcreteObservable o = new ConcreteObservable();
+
+        Gui c = new Gui(o);
+        FXMLLoader loader = new FXMLLoader(Gui.class.getResource("gui.fxml"));
+        loader.setControllerFactory(type -> {
+            if(type == Gui.class) return c;
+            else throw new IllegalArgumentException("Unexpected controller type " + type);
+        });
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+        Cli cli = new Cli(o);
+        Thread cliThread = new Thread(cli::run);
+        cliThread.setDaemon(true);
+        cliThread.start();
     }
     public static void main(String[] args) {
         //generate new input

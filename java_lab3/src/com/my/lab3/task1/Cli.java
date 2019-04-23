@@ -53,12 +53,13 @@ public class Cli implements java.util.Observer {
         inputFileName = sc.nextLine();
         System.out.println("Output file name: ");
         outputFileName = sc.nextLine();
-        doNumbers();
     }
 
     public void run() {
+        read();
         while(true) {
-            read();
+            new Scanner(System.in).nextLine();
+            doNumbers();
         }
     }
 
