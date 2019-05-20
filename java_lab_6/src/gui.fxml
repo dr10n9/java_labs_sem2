@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controller"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <HBox spacing="5">
+            <TextField maxWidth="200" fx:id="a0"></TextField>
+            <TextField maxWidth="200" fx:id="step"></TextField>
+            <TextField maxWidth="200" fx:id="n"></TextField>
+        </HBox>
+    </top>
+    <center>
+        <TextArea fx:id="result"></TextArea>
+    </center>
+    <bottom>
+        <HBox spacing="5">
+            <Button maxWidth="200" text="default" onAction="#defaultSum"></Button>
+            <Button maxWidth="200" text="standard" onAction="#standard"></Button>
+            <Button maxWidth="200" text="custom" onAction="#custom"></Button>
+        </HBox>
+    </bottom>
+
+</BorderPane>
