@@ -11,14 +11,20 @@ public class Generator implements Runnable {
         new Thread(this, "Generator").start();
     }
 
+    public ArrayList<Point> generateList() {
+        ArrayList<Point> points = new ArrayList<>();
+        Random r = new Random();
+        for (int i = 0; i < 3; i++) {
+            Point p = new Point(r.nextDouble() * 25, r.nextDouble() * 25);
+            points.add(p);
+        }
+        return points;
+    }
+
+    @Override
     public void run() {
-        while (true) {
-            ArrayList<Point> list = new ArrayList<>();
-            list.add(new Point(r.nextDouble() * 50, r.nextDouble() * 50));
-            list.add(new Point(r.nextDouble() * 50, r.nextDouble() * 50));
-            list.add(new Point(r.nextDouble() * 50, r.nextDouble() * 50));
-            System.out.println("generated new points");
-            q.set(list);
+        while(true) {
+            q.setPoints(generateList());
         }
     }
 }
