@@ -29,19 +29,22 @@ public class FileHandler {
         File file = new File(System.getProperty("user.dir") + "/" + fileName);
         if(!file.isFile()) return false;
         else {
+            DataOutputStream dos = null;
             try {
-                DataOutputStream dos = new DataOutputStream(
+                dos = new DataOutputStream(
                         new BufferedOutputStream(
                                 new FileOutputStream(fileName)
                         )
                 );
-                for(int i = 0; i < listSize; i++) {
+                for (int i = 0; i < listSize; i++) {
                     dos.writeDouble((Math.random() * 100 - 50));
                 }
                 dos.close();
                 return true;
             } catch (IOException e) {
                 throw e;
+            } finally {
+                dos.close();
             }
         }
     }

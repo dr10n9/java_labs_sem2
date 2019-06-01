@@ -6,12 +6,6 @@ import java.util.Optional;
 
 public interface Dao<T> {
 
-//    Optional<T> get();
-
-//    List<T> getAll();
-
-//    void update(T t);
-
     T getAll() throws IOException;
 
     void save(T t) throws IOException;

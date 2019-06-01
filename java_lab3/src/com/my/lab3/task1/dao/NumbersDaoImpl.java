@@ -25,7 +25,7 @@ public class NumbersDaoImpl implements Dao<Numbers> {
         try {
             return new Numbers(fileHandler.getDataFromFile());
         } catch (IOException e) {
-//            System.out.println(e.toString());
+            System.out.println(e.toString());
             throw e;
         }
     }
